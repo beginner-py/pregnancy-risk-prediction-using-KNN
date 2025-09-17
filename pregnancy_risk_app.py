@@ -1,15 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[35]:
-
-
 import streamlit as st
 import pickle
 import numpy as np
-
-
-# In[38]:
 
 
 # Load model
@@ -24,10 +18,6 @@ with open('scaler.pkl','rb') as scaler_file:
 st.title("Maternal Health and Pregnancy Risk Prediction")
 
 st.write("### Enter Health Details Below:")
-
-
-# In[39]:
-
 
 # Input Fields
 Age = st.number_input("Age:", min_value=0)
@@ -46,9 +36,6 @@ mental_health = 1 if st.toggle("Mental Health Issue?") else 0
 Heart_rate = st.number_input("Heart Rate:", min_value=0)
 
 
-# In[41]:
-
-
 if st.button("Predict"):
     features = np.array([[Age, SBP, DBP, Blood_sugar_HbA1c, Body_Temp, BMI,
                           previous_complication, preexisting_diabetes,
@@ -61,21 +48,6 @@ if st.button("Predict"):
      # Output result
     risk = "High Risk" if prediction[0] == 0 else "Low Risk"
     st.success(f"Predicted Risk Level: {risk}")
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
 
 
 
